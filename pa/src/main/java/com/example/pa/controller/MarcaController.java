@@ -1,6 +1,6 @@
 package com.example.pa.controller;
 
-import com.example.pa.entity.Marca;
+import com.example.pa.model.Marca;
 import com.example.pa.service.MarcaService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;

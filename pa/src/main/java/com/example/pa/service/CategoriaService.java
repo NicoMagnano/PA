@@ -1,10 +1,6 @@
 package com.example.pa.service;
 
-//Creo el Servicio CategoriaService
-//El servicio manejará la lógica de negocio. Podemos utilizar el repositorio para realizar las operaciones de base de datos. 
-//Creo una clase en el paquete com.example.pa.service.
-
-import com.example.pa.entity.Categoria; // Importa la clase 'Categoria', que es la entidad que representa las categorías en la aplicación.
+import com.example.pa.model.Categoria;
 import com.example.pa.repository.CategoriaRepository; // Importa el repositorio 'CategoriaRepository', que maneja la interacción con la base de datos
 import org.springframework.beans.factory.annotation.Autowired; // Importa la anotación '@Autowired' para la inyección de dependencias.
 import org.springframework.stereotype.Service; // Importa la anotación '@Service', que indica que esta clase es un servicio de la aplicación.

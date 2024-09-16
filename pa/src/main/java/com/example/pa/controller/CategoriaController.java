@@ -1,8 +1,6 @@
 package com.example.pa.controller;
 
-//Este controlador proporciona una API básica para realizar operaciones CRUD sobre la entidad Categoria en la aplicación
-
-import com.example.pa.entity.Categoria;
+import com.example.pa.model.Categoria;
 import com.example.pa.service.CategoriaService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;

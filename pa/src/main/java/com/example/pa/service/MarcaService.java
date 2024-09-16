@@ -1,6 +1,6 @@
 package com.example.pa.service;
 
-import com.example.pa.entity.Marca;
+import com.example.pa.model.Marca;
 import com.example.pa.repository.MarcaRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

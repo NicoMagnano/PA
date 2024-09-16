@@ -1,4 +1,5 @@
-package com.example.pa.entity;
+package com.example.pa.model;
+
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -6,16 +7,21 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 
 @Entity
-public class Marca {
+public class Categoria {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     private String nombre;
-    private String descripcion;
 
-    // Getters y Setters
+    // Constructores, getters y setters
+    public Categoria() {}
+
+    public Categoria(String nombre) {
+        this.nombre = nombre;
+    }
+
     public Long getId() {
         return id;
     }
@@ -31,12 +37,6 @@ public class Marca {
     public void setNombre(String nombre) {
         this.nombre = nombre;
     }
-
-    public String getDescripcion() {
-        return descripcion;
-    }
-
-    public void setDescripcion(String descripcion) {
-        this.descripcion = descripcion;
-    }
 }
+
+
