@@ -4,11 +4,20 @@ package com.example.pa.repository; //// Define el paquete en el que está la cla
 // Creo una interfaz en el paquete com.example.pa.repository:
 
 import com.example.pa.entity.Categoria;
+
+import java.util.List;
+
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 @Repository // Indica que esta interfaz es un repositorio Spring, lo que permite que Spring lo descubra automáticamente y lo gestione como un bean.
 public interface CategoriaRepository extends JpaRepository<Categoria, Long> {
+
+   //Categorías Activas
+   List<Categoria> findByActivoTrue();
+    
+   //Categorías Inactivas
+   List<Categoria> findByActivoFalse();
 
     // Esta interfaz extiende 'JpaRepository', lo que significa que hereda todos los métodos CRUD estándar como save(), findAll(), findById(), deleteById(), etc.
     // 'Categoria' es la entidad que gestionará este repositorio.

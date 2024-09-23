@@ -18,9 +18,9 @@ public class CategoriaService {
     @Autowired // Inyecta automáticamente el repositorio 'CategoriaRepository' en esta clase para poder usar sus métodos de acceso a la base de datos.
     private CategoriaRepository categoriaRepository;
 
-    // Método para listar todas las categorías almacenadas en la base de datos
-    public List<Categoria> listarCategorias() {
-        return categoriaRepository.findAll();
+    //Listado de categorías Activas
+    public List<Categoria> listarCategoriasActivas() {
+        return categoriaRepository.findByActivoTrue();
     }
 
     // Método para obtener una categoría específica por su ID. Devuelve un Optional que puede contener o no la categoría.
@@ -28,24 +28,47 @@ public class CategoriaService {
         return categoriaRepository.findById(id);
     }
 
-    // Método para guardar una nueva categoría o actualizar una existente en la base de datos.
-    public Categoria guardarCategoria(Categoria categoria) {
+    // Creacion de Nueva Categoria
+    public Categoria crearCategoria(Categoria categoria) {
         return categoriaRepository.save(categoria);
     }
 
-    // Método para eliminar una categoría de la base de datos por su ID.
-    public void eliminarCategoria(Long id) {
-        categoriaRepository.deleteById(id);
+    // Actilizacion de Categorias
+    public Categoria actualizarCategoria(Long id, Categoria categoriaActualizada) {
+        Optional<Categoria> optionalCategoria = categoriaRepository.findById(id);
+        if (optionalCategoria.isPresent()) {
+            Categoria categoria = optionalCategoria.get();
+            categoria.setNombre(categoriaActualizada.getNombre());
+            categoria.setActivo(categoriaActualizada.isActivo());
+            return categoriaRepository.save(categoria);
+        } else {
+            throw new RuntimeException("Categoría no encontrada");
+        }
     }
 
-    // Método para actualizar una categoría existente en la base de datos.
-    public Categoria actualizarCategoria(Long id, Categoria categoriaActualizada) {
-        return categoriaRepository.findById(id) // Busca la categoría por su ID.
-                .map(categoria -> { // Si la categoría existe, actualiza sus campos.
-                    categoria.setNombre(categoriaActualizada.getNombre()); // Actualiza el nombre de la categoría con el valor proporcionado.
-                    return categoriaRepository.save(categoria); // Guarda los cambios en la base de datos.
-                })
-                .orElseThrow(() -> new RuntimeException("Categoría no encontrada con ID: " + id)); // Si la categoría no se encuentra, lanza una excepción.
+    // Eliminacion de una Categoría (Cambio de estado "Inactiva")
+    public void eliminarCategoria(Long id) {
+        Optional<Categoria> optionalCategoria = categoriaRepository.findById(id);
+        if (optionalCategoria.isPresent()) {
+            Categoria categoria = optionalCategoria.get();
+            categoria.setActivo(false);  // Cambia estado a inactivo
+            categoriaRepository.save(categoria);
+        } else {
+            throw new RuntimeException("Categoría no encontrada");
+        }
     }
+
+    // Recuperacion de Categoria (Cambio de estado "Activa")
+    public Categoria recuperarCategoria(Long id) {
+        Optional<Categoria> optionalCategoria = categoriaRepository.findById(id);
+        if (optionalCategoria.isPresent()) {
+            Categoria categoria = optionalCategoria.get();
+            categoria.setActivo(true);  // Cambia estado a activo
+            return categoriaRepository.save(categoria);
+        } else {
+            throw new RuntimeException("Categoría no encontrada");
+        }
+    }
+
 }
 

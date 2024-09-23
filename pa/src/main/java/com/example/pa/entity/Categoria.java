@@ -1,10 +1,14 @@
 package com.example.pa.entity;
 
 
+import java.util.List;
+
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
 
 @Entity
 public class Categoria {
@@ -15,28 +19,48 @@ public class Categoria {
 
     private String nombre;
 
-    // Constructores, getters y setters
-    public Categoria() {}
+    private boolean activo = true; //Indicador de Categoria (Activa/Inactiva)
 
-    public Categoria(String nombre) {
-        this.nombre = nombre;
-    }
+    @OneToMany(mappedBy = "categoria", cascade = CascadeType.ALL)
+    private List<SubCategoria> subcategorias;
 
+   
+    //Getter
     public Long getId() {
         return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
     }
 
     public String getNombre() {
         return nombre;
     }
 
+    public boolean isActivo() {
+        return activo;
+    }
+
+    public List<SubCategoria> getSubcategorias() {
+        return subcategorias;
+    }
+
+    
+
+    //Setter
+    public void setId(Long id) {
+        this.id = id;
+    }
+
     public void setNombre(String nombre) {
         this.nombre = nombre;
     }
+
+    public void setActivo(boolean activo) {
+        this.activo = activo;
+    }
+
+    public void setSubcategorias(List<SubCategoria> subcategorias) {
+        this.subcategorias = subcategorias;
+    }
+
 }
 
 
