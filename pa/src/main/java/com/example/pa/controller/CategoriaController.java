@@ -16,9 +16,11 @@ public class CategoriaController {
     @Autowired // Inyecta automáticamente el servicio 'CategoriaService' en esta clase para poder usar sus métodos.
     private CategoriaService categoriaService;
 
+     // Endpoint para Listar Categorias Activas
+
     @GetMapping // Método para manejar solicitudes GET en la ruta base '/categorias'. Devuelve una lista de todas las categorías.
     public List<Categoria> listarCategorias() {
-        return categoriaService.listarCategorias();
+        return categoriaService.listarCategoriasActivas();
     }
 
     @GetMapping("/{id}") // Método para manejar solicitudes GET en la ruta '/categorias/{id}', donde {id} es el identificador de la categoría. Devuelve una categoría específica.
@@ -27,24 +29,32 @@ public class CategoriaController {
         return categoria.map(ResponseEntity::ok).orElseGet(() -> ResponseEntity.notFound().build());
     }
 
-    @PostMapping // Método para manejar solicitudes POST en la ruta base '/categorias'. Crea una nueva categoría.
+    //Endpoint para crear una nueva categoría
+
+    @PostMapping 
     public Categoria crearCategoria(@RequestBody Categoria categoria) {
-        return categoriaService.guardarCategoria(categoria);
+        return categoriaService.crearCategoria(categoria);
     }
+
+     //Endpoint para Actualizar una Categoría Existente
 
     @PutMapping("/{id}") // Método para manejar solicitudes PUT en la ruta '/categorias/{id}', donde {id} es el identificador de la categoría. Actualiza una categoría existente.
-    public ResponseEntity<Categoria> actualizarCategoria(@PathVariable Long id, @RequestBody Categoria categoriaActualizada) {
-        try {
-            Categoria categoria = categoriaService.actualizarCategoria(id, categoriaActualizada);
-            return ResponseEntity.ok(categoria);
-        } catch (Exception e) {
-            return ResponseEntity.notFound().build();
-        }
+    public Categoria actualizarCategoria(@PathVariable Long id, @RequestBody Categoria categoria) {
+        return categoriaService.actualizarCategoria(id, categoria);
     }
 
+    //Endpoint para Eliminar una Categoría 
+
     @DeleteMapping("/{id}") // Método para manejar solicitudes DELETE en la ruta '/categorias/{id}', donde {id} es el identificador de la categoría. Elimina una categoría existente.
-    public ResponseEntity<Void> eliminarCategoria(@PathVariable Long id) {
+    public void eliminarCategoria(@PathVariable Long id) {
         categoriaService.eliminarCategoria(id);
-        return ResponseEntity.noContent().build(); // Devuelve una respuesta HTTP 204 (No Content) para indicar que la eliminación fue exitosa y no hay contenido en la respuesta.
     }
+
+    // Endpoint para Recuperar una Categoría Eliminada
+    @PutMapping("/recuperar/{id}")
+    public Categoria recuperarCategoria(@PathVariable Long id) {
+        return categoriaService.recuperarCategoria(id);
+    }
+
+    
 }

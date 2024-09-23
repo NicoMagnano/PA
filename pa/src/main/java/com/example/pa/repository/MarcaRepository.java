@@ -8,4 +8,3 @@ import com.example.pa.model.Marca;
 @Repository
 public interface MarcaRepository extends JpaRepository<Marca, Long> {
 }
-
