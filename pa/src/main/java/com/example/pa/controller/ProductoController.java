@@ -4,7 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import com.example.pa.entity.Inventario;
+
 import com.example.pa.entity.Producto;
 import com.example.pa.service.ProductoService;
 
@@ -58,23 +58,5 @@ public class ProductoController {
         return productoService.recuperarProducto(id);
     }
 
-    @PutMapping("/{id}/stock")
-    public ResponseEntity<Producto> updateStock(@PathVariable Long id, @RequestParam int newStock) {
-        Producto producto = productoService.findById(id);
-        producto.setStock(newStock);
-        productoService.VerificarStockBajo(producto); // Verificación del stock bajo
-        productoService.save(producto);
-        return ResponseEntity.ok(producto);
-    }
-
-    @PostMapping("/{id}/ajustar-stock")
-    public ResponseEntity<Inventario> ajustarStock(
-    @PathVariable Long id, 
-    @RequestParam int cantidad, 
-    @RequestParam String razon) {
-    
-    Producto product = productoService.findById(id);
-    Inventario history = productoService.ajustarStock(product, cantidad, razon);
-    return ResponseEntity.ok(history);
-}
+   
 }

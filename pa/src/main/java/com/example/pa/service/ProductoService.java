@@ -4,9 +4,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 //import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Service;
 
-import com.example.pa.entity.Inventario;
+
 import com.example.pa.entity.Producto;
-import com.example.pa.repository.InventarioRepository;
 import com.example.pa.repository.ProductoRepository;
 import jakarta.persistence.EntityNotFoundException;
 
@@ -21,10 +20,7 @@ public class ProductoService {
     // Repositorio para manejar productos
     private ProductoRepository productoRepository;
 
-    @Autowired
-    // Repositorio para manejar el historial de inventario
-    private InventarioRepository HistorialInventarioRepository;
-
+   
     //Listado de Productos Activos(True)
     public List<Producto> listarProductosActivos() {
         return productoRepository.findByActivoTrue(); 
@@ -119,29 +115,5 @@ public class ProductoService {
         productoRepository.save(producto);
     }
 
-     // Método para ajustar el stock de un producto
-    public Inventario ajustarStock(Producto producto, int cantidad, String razon) {
-        producto.setStock(producto.getStock() + cantidad); // Ajustar el stock
-    
-        Inventario Historial = new Inventario(); // Crea un nuevo objeto de historial de inventario
-        Historial.setProducto(producto);
-        Historial.setCantidadAjustada(cantidad); // Registra la cantidad ajustada
-        Historial.setRazon(razon); // Registra la razón del ajuste
-        Historial.setFechaAjuste(LocalDateTime.now());// Establece la fecha y hora del ajuste
-    
-       // JpaRepository <Producto, Long> InventarioRepository;
-    // Guardar historial en base de datos (repositorio)
-       // InventarioRepository.save(Historial);
-    
-    // Verificar si el stock es bajo después del ajuste
-        VerificarStockBajo(producto);
-    
-        return Historial;// Devuelve el objeto de historial de inventario
-    }
-    
-    // Método para obtener todo el historial de inventario
-    public List<Inventario> obtenerInventarioCompleto() {
-        return (List<Inventario>) HistorialInventarioRepository.findAll();
-    }
-
+     
 }
