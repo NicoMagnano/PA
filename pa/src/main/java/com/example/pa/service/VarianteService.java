@@ -4,7 +4,8 @@ import java.util.List;
 import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import com.example.pa.entity.Variante;
+
+import com.example.pa.model.Variante;
 import com.example.pa.repository.VarianteRepository;
 
 @Service

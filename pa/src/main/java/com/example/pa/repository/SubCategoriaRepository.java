@@ -2,7 +2,8 @@ package com.example.pa.repository;
 
 import java.util.List;
 import org.springframework.data.jpa.repository.JpaRepository;
-import com.example.pa.entity.SubCategoria;
+
+import com.example.pa.model.SubCategoria;
 
 
 public interface SubCategoriaRepository extends JpaRepository<SubCategoria, Long> {
