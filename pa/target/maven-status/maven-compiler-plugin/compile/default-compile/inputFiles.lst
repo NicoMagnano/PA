@@ -1,5 +1,21 @@
-C:\Users\niqui\Desktop\Programacion Avanzada\PA\pa\src\main\java\com\example\pa\controller\CategoriaController.java
-C:\Users\niqui\Desktop\Programacion Avanzada\PA\pa\src\main\java\com\example\pa\entity\Categoria.java
-C:\Users\niqui\Desktop\Programacion Avanzada\PA\pa\src\main\java\com\example\pa\PaApplication.java
-C:\Users\niqui\Desktop\Programacion Avanzada\PA\pa\src\main\java\com\example\pa\repository\CategoriaRepository.java
-C:\Users\niqui\Desktop\Programacion Avanzada\PA\pa\src\main\java\com\example\pa\service\CategoriaService.java
+C:\Users\niqui\Desktop\Programacion Avanzada\PA GIT\PA\pa\src\main\java\com\example\pa\repository\CategoriaRepository.java
+C:\Users\niqui\Desktop\Programacion Avanzada\PA GIT\PA\pa\src\main\java\com\example\pa\model\Producto.java
+C:\Users\niqui\Desktop\Programacion Avanzada\PA GIT\PA\pa\src\main\java\com\example\pa\service\MarcaService.java
+C:\Users\niqui\Desktop\Programacion Avanzada\PA GIT\PA\pa\src\main\java\com\example\pa\service\VarianteService.java
+C:\Users\niqui\Desktop\Programacion Avanzada\PA GIT\PA\pa\src\main\java\com\example\pa\repository\MarcaRepository.java
+C:\Users\niqui\Desktop\Programacion Avanzada\PA GIT\PA\pa\src\main\java\com\example\pa\controller\MarcaController.java
+C:\Users\niqui\Desktop\Programacion Avanzada\PA GIT\PA\pa\src\main\java\com\example\pa\service\ProductoService.java
+C:\Users\niqui\Desktop\Programacion Avanzada\PA GIT\PA\pa\src\main\java\com\example\pa\controller\CategoriaController.java
+C:\Users\niqui\Desktop\Programacion Avanzada\PA GIT\PA\pa\src\main\java\com\example\pa\model\Variante.java
+C:\Users\niqui\Desktop\Programacion Avanzada\PA GIT\PA\pa\src\main\java\com\example\pa\PaApplication.java
+C:\Users\niqui\Desktop\Programacion Avanzada\PA GIT\PA\pa\src\main\java\com\example\pa\service\SubCategoriaService.java
+C:\Users\niqui\Desktop\Programacion Avanzada\PA GIT\PA\pa\src\main\java\com\example\pa\model\Categoria.java
+C:\Users\niqui\Desktop\Programacion Avanzada\PA GIT\PA\pa\src\main\java\com\example\pa\controller\SubCategoriaController.java
+C:\Users\niqui\Desktop\Programacion Avanzada\PA GIT\PA\pa\src\main\java\com\example\pa\repository\SubCategoriaRepository.java
+C:\Users\niqui\Desktop\Programacion Avanzada\PA GIT\PA\pa\src\main\java\com\example\pa\model\Marca.java
+C:\Users\niqui\Desktop\Programacion Avanzada\PA GIT\PA\pa\src\main\java\com\example\pa\controller\ProductoController.java
+C:\Users\niqui\Desktop\Programacion Avanzada\PA GIT\PA\pa\src\main\java\com\example\pa\model\SubCategoria.java
+C:\Users\niqui\Desktop\Programacion Avanzada\PA GIT\PA\pa\src\main\java\com\example\pa\controller\VarianteController.java
+C:\Users\niqui\Desktop\Programacion Avanzada\PA GIT\PA\pa\src\main\java\com\example\pa\repository\VarianteRepository.java
+C:\Users\niqui\Desktop\Programacion Avanzada\PA GIT\PA\pa\src\main\java\com\example\pa\repository\ProductoRepository.java
+C:\Users\niqui\Desktop\Programacion Avanzada\PA GIT\PA\pa\src\main\java\com\example\pa\service\CategoriaService.java
