@@ -1,19 +1,20 @@
-package com.example.pa.model;
+package com.example.pa.dto.marca;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+public class MarcaDTO {
 
-@Entity
-public class Marca {
-
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private boolean activo;
     private String nombre;
     private String descripcion;
+    private boolean activo;
+    // Constructor vacío
+    public MarcaDTO() {}
+
+    // Constructor con parámetros
+    public MarcaDTO(Long id, String nombre, String descripcion) {
+        this.id = id;
+        this.nombre = nombre;
+        this.descripcion = descripcion;
+    }
 
     // Getters y Setters
     public Long getId() {
@@ -39,13 +40,4 @@ public class Marca {
     public void setDescripcion(String descripcion) {
         this.descripcion = descripcion;
     }
-
-    public boolean isActivo() {
-        return activo;
-    }
-
-    public void setActivo(boolean activo) {
-        this.activo = activo;
-    }
-
 }
