@@ -24,7 +24,14 @@ public class Categoria {
     @OneToMany(mappedBy = "categoria", cascade = CascadeType.ALL)
     private List<SubCategoria> subcategorias;
 
-   
+    //Contructor
+    public Categoria(Long id, String nombre, boolean activo, List<SubCategoria> subcategorias) {
+        this.id = id;
+        this.nombre = nombre;
+        this.activo = activo;
+        this.subcategorias = subcategorias;
+    }
+
     //Getter
     public Long getId() {
         return id;
