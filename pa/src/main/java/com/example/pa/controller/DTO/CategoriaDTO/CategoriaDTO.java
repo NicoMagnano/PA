@@ -1,17 +1,14 @@
-package com.example.pa.controller.DTO.CategoriaDTO;
-
 public class CategoriaDTO {
     
     private Long id;
     private String nombre;
-    private boolean activo = true; //Indicador de Categoria (Activa/Inactiva)
-
+    private String descripcion;
 
     //Constructor
-    public CategoriaDTO(Long id, String nombre, boolean activo) {
+    public CategoriaDTO(Long id, String nombre, String descripcion) {
         this.id = id;
         this.nombre = nombre;
-        this.activo = activo;
+        this.descripcion = descripcion;
     }
 
 
@@ -32,16 +29,13 @@ public class CategoriaDTO {
         this.nombre = nombre;
     }
 
-    public boolean isActivo() {
-        return activo;
+
+    public String getDescripcion() {
+        return descripcion;
     }
 
-    public void setActivo(boolean activo) {
-        this.activo = activo;
+
+    public void setDescripcion(String descripcion) {
+        this.descripcion = descripcion;
     }
-
-   
-
-    
-    
 }
