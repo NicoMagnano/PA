@@ -10,7 +10,7 @@ public class MarcaDTO {
     private String descripcion;
    
    //Constructor
-    public MarcaDTO(Long id, String nombre, String descripcion, boolean activo) {
+    public MarcaDTO(Long id, String nombre, String descripcion) {
         this.id = id;
         this.nombre = nombre;
         this.descripcion = descripcion;
