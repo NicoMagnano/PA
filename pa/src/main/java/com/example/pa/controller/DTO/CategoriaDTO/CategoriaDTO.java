@@ -1,3 +1,5 @@
+package com.example.pa.controller.DTO.CategoriaDTO;
+
 public class CategoriaDTO {
     
     private Long id;
