@@ -12,10 +12,6 @@ public class Marca {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-<<<<<<< HEAD
-    private boolean activo;
-=======
->>>>>>> 5fde2b6b40d5f6bb0f930384854414f96cc2cae0
     private String nombre;
     private String descripcion;
     private boolean activo =true;
@@ -58,12 +54,7 @@ public class Marca {
 
     public void setActivo(boolean activo) {
         this.activo = activo;
-<<<<<<< HEAD
-    }
-
-=======
     } 
->>>>>>> 5fde2b6b40d5f6bb0f930384854414f96cc2cae0
 }
 
     

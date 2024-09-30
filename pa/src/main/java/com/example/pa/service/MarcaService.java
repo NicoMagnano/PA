@@ -3,8 +3,7 @@ package com.example.pa.service;
 import com.example.pa.controller.DTO.MarcaDTO.MarcaDTO;
 import com.example.pa.controller.Mapper.MarcaMapper;
 import com.example.pa.model.Marca;
-import com.example.pa.dto.marca.MarcaDTO;
-import com.example.pa.mapper.MarcaMapper;
+import com.example.pa.controller.Mapper.MarcaMapper;
 import com.example.pa.repository.MarcaRepository;
 
 import jakarta.persistence.EntityNotFoundException;
@@ -24,36 +23,6 @@ public class MarcaService {
     @Autowired
     private MarcaMapper marcaMapper;
 
-<<<<<<< HEAD
-    public List<MarcaDTO> getAllMarcas() {
-        return marcaRepository.findAll()
-                              .stream()
-                              .map(marcaMapper::toDto)
-                              .collect(Collectors.toList());
-    }
-
-    public MarcaDTO getMarcaById(Long id) {
-        Optional<Marca> marca = marcaRepository.findById(id);
-        return marca.map(marcaMapper::toDto).orElse(null);
-    }
-
-    public MarcaDTO createMarca(MarcaDTO marcaDTO) {
-        Marca marca = marcaMapper.toEntity(marcaDTO);
-        marca = marcaRepository.save(marca);
-        return marcaMapper.toDto(marca);
-    }
-
-    public MarcaDTO updateMarca(Long id, MarcaDTO marcaDTO) {
-        Optional<Marca> existingMarca = marcaRepository.findById(id);
-        if (existingMarca.isPresent()) {
-            Marca marca = existingMarca.get();
-            marca.setNombre(marcaDTO.getNombre());
-            marca.setDescripcion(marcaDTO.getDescripcion());
-            marcaRepository.save(marca);
-            return marcaMapper.toDto(marca);
-        }
-        return null; // Manejo de error si la Marca no existe
-=======
    public MarcaDTO crearMarca(MarcaDTO marcaDTO) {
         Marca marca = marcaMapper.toEntity(marcaDTO);
         marca = marcaRepository.save(marca);
@@ -94,11 +63,10 @@ public class MarcaService {
         return marcas.stream()
                      .map(marcaMapper::toDTO)
                      .toList();
->>>>>>> 5fde2b6b40d5f6bb0f930384854414f96cc2cae0
     }
 
      // Método para "eliminar" (ocultar) una marca
-    public void eliminarMarca(Long id) {
+    public void deleteById(Long id) {
         Marca marca = marcaRepository.findById(id)
                                      .orElseThrow(() -> new EntityNotFoundException("Marca no encontrada"));
         marca.setActivo(false);
