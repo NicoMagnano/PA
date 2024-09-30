@@ -32,7 +32,7 @@ public class ProductoController {
 
     @PutMapping("/{id}")
     public ResponseEntity<Producto> actualizarProducto(@PathVariable Long id, @RequestBody Producto productoActualizado) {
-        // Verificar si productoActualizado es null
+        // Verificar si producto Actualizado es null
         if (productoActualizado == null) {
             return ResponseEntity.badRequest().body(null); // Manejar el caso en el que no se pase un objeto en la solicitud
         }
