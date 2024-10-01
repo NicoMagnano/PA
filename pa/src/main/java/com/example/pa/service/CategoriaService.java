@@ -1,10 +1,10 @@
 package com.example.pa.service;
 
 import com.example.pa.model.Categoria;
+import com.example.pa.model.Marca;
 import com.example.pa.repository.CategoriaRepository; // Importa el repositorio 'CategoriaRepository', que maneja la interacción con la base de datos
 import org.springframework.beans.factory.annotation.Autowired; // Importa la anotación '@Autowired' para la inyección de dependencias.
 import org.springframework.stereotype.Service; // Importa la anotación '@Service', que indica que esta clase es un servicio de la aplicación.
-
 import java.util.List;
 import java.util.Optional;
 
@@ -14,57 +14,37 @@ public class CategoriaService {
     @Autowired // Inyecta automáticamente el repositorio 'CategoriaRepository' en esta clase para poder usar sus métodos de acceso a la base de datos.
     private CategoriaRepository categoriaRepository;
 
-    //Listado de categorías Activas
-    public List<Categoria> listarCategoriasActivas() {
-        return categoriaRepository.findByActivoTrue();
+
+    // Obtener todas las categorías
+    public List<Categoria> findAll() {
+        return categoriaRepository.findAll();
     }
 
-    // Método para obtener una categoría específica por su ID. Devuelve un Optional que puede contener o no la categoría.
-    public Optional<Categoria> obtenerCategoriaPorId(Long id) {
+    // Obtener una categoría por ID
+    public Optional<Categoria> findById(Long id) {
         return categoriaRepository.findById(id);
     }
 
-    // Creacion de Nueva Categoria
-    public Categoria crearCategoria(Categoria categoria) {
+    public Categoria save(Categoria categoria) {
         return categoriaRepository.save(categoria);
     }
 
-    // Actilizacion de Categorias
-    public Categoria actualizarCategoria(Long id, Categoria categoriaActualizada) {
-        Optional<Categoria> optionalCategoria = categoriaRepository.findById(id);
-        if (optionalCategoria.isPresent()) {
-            Categoria categoria = optionalCategoria.get();
-            categoria.setNombre(categoriaActualizada.getNombre());
-            categoria.setActivo(categoriaActualizada.isActivo());
-            return categoriaRepository.save(categoria);
-        } else {
-            throw new RuntimeException("Categoría no encontrada");
-        }
-    }
 
-    // Eliminacion de una Categoría (Cambio de estado "Inactiva")
     public void eliminarCategoria(Long id) {
-        Optional<Categoria> optionalCategoria = categoriaRepository.findById(id);
-        if (optionalCategoria.isPresent()) {
-            Categoria categoria = optionalCategoria.get();
-            categoria.setActivo(false);  // Cambia estado a inactivo
-            categoriaRepository.save(categoria);
-        } else {
-            throw new RuntimeException("Categoría no encontrada");
-        }
+        Categoria categoria = categoriaRepository.findById(id)
+            .orElseThrow(() -> new RuntimeException("Categoria no encontrada"));
+        categoria.setActivo(false); // Oculta la marca
+        categoriaRepository.save(categoria);
     }
 
-    // Recuperacion de Categoria (Cambio de estado "Activa")
-    public Categoria recuperarCategoria(Long id) {
-        Optional<Categoria> optionalCategoria = categoriaRepository.findById(id);
-        if (optionalCategoria.isPresent()) {
-            Categoria categoria = optionalCategoria.get();
-            categoria.setActivo(true);  // Cambia estado a activo
-            return categoriaRepository.save(categoria);
-        } else {
-            throw new RuntimeException("Categoría no encontrada");
-        }
+    public void recuperarCategoria(Long id) {
+        Categoria categoria = categoriaRepository.findById(id)
+            .orElseThrow(() -> new RuntimeException("Categoria no encontrada"));
+        categoria.setActivo(true); // Recupera la Cat
+        categoriaRepository.save(categoria);
     }
 
+    public List<Categoria> obtenerCategoriasActivas() {
+        return categoriaRepository.findByActivo(true);
+    }
 }
-

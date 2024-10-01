@@ -43,10 +43,6 @@ public class Producto {
     @JoinColumn(name = "categoria_id")
     private Categoria categoria;
 
-    @ManyToOne
-    @JoinColumn(name = "subcategoria_id")
-    private SubCategoria subcategoria;
-
     @OneToMany(mappedBy = "producto", cascade = CascadeType.ALL)
     private List<Variante> variantes;
 
@@ -89,9 +85,7 @@ public class Producto {
         return categoria;
     }
 
-    public SubCategoria getSubcategoria() {
-        return subcategoria;
-    }
+
 
     public List<Variante> getVariantes() {
         return variantes;
@@ -140,9 +134,6 @@ public class Producto {
         this.categoria = categoria;
     }
 
-    public void setSubcategoria(SubCategoria subcategoria) {
-        this.subcategoria = subcategoria;
-    }
 
     public void setVariantes(List<Variante> variantes) {
         this.variantes = variantes;

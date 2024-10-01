@@ -26,7 +26,21 @@ public class MarcaService {
         return marcaRepository.save(marca);
     }
 
-    public void deleteById(Long id) {
-        marcaRepository.deleteById(id);
+    public void eliminarMarca(Long id) {
+        Marca marca = marcaRepository.findById(id)
+            .orElseThrow(() -> new RuntimeException("Marca no encontrada"));
+        marca.setActivo(false); // Oculta la marca
+        marcaRepository.save(marca);
+    }
+
+    public void recuperarMarca(Long id) {
+        Marca marca = marcaRepository.findById(id)
+            .orElseThrow(() -> new RuntimeException("Marca no encontrada"));
+        marca.setActivo(true); // Recupera la marca
+        marcaRepository.save(marca);
+    }
+
+    public List<Marca> obtenerMarcasActivas() {
+        return marcaRepository.findByActivo(true);
     }
 }

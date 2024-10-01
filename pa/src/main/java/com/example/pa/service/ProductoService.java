@@ -40,7 +40,6 @@ public class ProductoService {
             producto.setDescripcion(productoActualizado.getDescripcion());
             producto.setPrecio(productoActualizado.getPrecio());
             producto.setCategoria(productoActualizado.getCategoria());
-            producto.setSubcategoria(productoActualizado.getSubcategoria());
             producto.setImagenes(productoActualizado.getImagenes());
             producto.setStock(productoActualizado.getStock());
             producto.setActivo(productoActualizado.isActivo());// Actualiza Estado (Activo)

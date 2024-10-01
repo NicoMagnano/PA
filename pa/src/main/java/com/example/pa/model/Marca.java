@@ -11,9 +11,9 @@ public class Marca {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-
     private String nombre;
     private String descripcion;
+    private boolean activo = true;
 
     // Getters y Setters
     public Long getId() {
@@ -38,5 +38,9 @@ public class Marca {
 
     public void setDescripcion(String descripcion) {
         this.descripcion = descripcion;
+    }
+
+    public void setActivo(boolean activo){
+        this.activo= activo;
     }
 }

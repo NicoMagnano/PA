@@ -42,11 +42,20 @@ public class MarcaController {
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<Void> deleteMarca(@PathVariable Long id) {
-        if (!marcaService.findById(id).isPresent()) {
-            return ResponseEntity.notFound().build();
-        }
-        marcaService.deleteById(id);
-        return ResponseEntity.noContent().build();
+    public ResponseEntity<String> eliminarMarca(@PathVariable Long id) {
+        marcaService.eliminarMarca(id);
+        return ResponseEntity.ok("Marca ocultada exitosamente");
+    }
+
+    @PutMapping("/recuperar/{id}")
+    public ResponseEntity<String> recuperarMarca(@PathVariable Long id) {
+        marcaService.recuperarMarca(id);
+        return ResponseEntity.ok("Marca recuperada exitosamente");
+    }
+
+    @GetMapping("/activas")
+    public ResponseEntity<List<Marca>> obtenerMarcasActivas() {
+        List<Marca> marcasActivas = marcaService.obtenerMarcasActivas();
+        return ResponseEntity.ok(marcasActivas);
     }
 }
