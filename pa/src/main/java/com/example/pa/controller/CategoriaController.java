@@ -1,56 +1,60 @@
 package com.example.pa.controller;
 
-import com.example.pa.controller.DTO.CategoriaDTO.CategoriaDTO;
+import com.example.pa.model.Categoria;
 import com.example.pa.service.CategoriaService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Optional;
 
-
-@RestController
-@RequestMapping("/categorias")
+@RestController // Anota esta clase como un controlador REST, lo que significa que maneja solicitudes HTTP y devuelve respuestas JSON.
+@RequestMapping("/categorias") // Define la ruta base para todas las solicitudes en este controlador. En este caso, todas las rutas comienzan con '/categorias'.
 public class CategoriaController {
 
-    @Autowired
+    @Autowired // Inyecta automáticamente el servicio 'CategoriaService' en esta clase para poder usar sus métodos.
     private CategoriaService categoriaService;
 
-    // Método para crear una nueva categoría
-    @PostMapping
-    public ResponseEntity<CategoriaDTO> crearCategoria(@RequestBody CategoriaDTO categoriaDTO) {
-        CategoriaDTO nuevaCategoria = categoriaService.crearCategoria(categoriaDTO);
-        return new ResponseEntity<>(nuevaCategoria, HttpStatus.CREATED);
+     // Endpoint para Listar Categorias Activas
+
+    @GetMapping // Método para manejar solicitudes GET en la ruta base '/categorias'. Devuelve una lista de todas las categorías.
+    public List<Categoria> listarCategorias() {
+        return categoriaService.listarCategoriasActivas();
     }
 
-    // Método para actualizar una categoría existente
-    @PutMapping("/{id}")
-    public ResponseEntity<CategoriaDTO> actualizarCategoria(@PathVariable Long id, @RequestBody CategoriaDTO categoriaDTO) {
-        CategoriaDTO categoriaActualizada = categoriaService.actualizarCategoria(id, categoriaDTO);
-        return categoriaActualizada != null
-            ? new ResponseEntity<>(categoriaActualizada, HttpStatus.OK)
-            : new ResponseEntity<>(HttpStatus.NOT_FOUND);
+    @GetMapping("/{id}") // Método para manejar solicitudes GET en la ruta '/categorias/{id}', donde {id} es el identificador de la categoría. Devuelve una categoría específica.
+    public ResponseEntity<Categoria> obtenerCategoriaPorId(@PathVariable Long id) {
+        Optional<Categoria> categoria = categoriaService.obtenerCategoriaPorId(id);
+        return categoria.map(ResponseEntity::ok).orElseGet(() -> ResponseEntity.notFound().build());
     }
 
-    // Método para eliminar una categoría (eliminación lógica)
-    @DeleteMapping("/{id}")
-    public ResponseEntity<Void> eliminarCategoria(@PathVariable Long id) {
+    //Endpoint para crear una nueva categoría
+
+    @PostMapping 
+    public Categoria crearCategoria(@RequestBody Categoria categoria) {
+        return categoriaService.crearCategoria(categoria);
+    }
+
+     //Endpoint para Actualizar una Categoría Existente
+
+    @PutMapping("/{id}") // Método para manejar solicitudes PUT en la ruta '/categorias/{id}', donde {id} es el identificador de la categoría. Actualiza una categoría existente.
+    public Categoria actualizarCategoria(@PathVariable Long id, @RequestBody Categoria categoria) {
+        return categoriaService.actualizarCategoria(id, categoria);
+    }
+
+    //Endpoint para Eliminar una Categoría 
+
+    @DeleteMapping("/{id}") // Método para manejar solicitudes DELETE en la ruta '/categorias/{id}', donde {id} es el identificador de la categoría. Elimina una categoría existente.
+    public void eliminarCategoria(@PathVariable Long id) {
         categoriaService.eliminarCategoria(id);
-        return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }
 
-    // Método para recuperar una categoría previamente eliminada
+    // Endpoint para Recuperar una Categoría Eliminada
     @PutMapping("/recuperar/{id}")
-    public ResponseEntity<Void> recuperarCategoria(@PathVariable Long id) {
-        categoriaService.recuperarCategoria(id);
-        return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+    public Categoria recuperarCategoria(@PathVariable Long id) {
+        return categoriaService.recuperarCategoria(id);
     }
 
-    // Método para obtener todas las categorías no eliminadas
-    @GetMapping
-    public ResponseEntity<List<CategoriaDTO>> obtenerCategorias() {
-        List<CategoriaDTO> categorias = categoriaService.obtenerCategorias();
-        return new ResponseEntity<>(categorias, HttpStatus.OK);
-    }
+    
 }
