@@ -2,14 +2,12 @@ package com.example.pa.controller.Mapper;
 
 import com.example.pa.controller.DTO.CategoriaDTO.CategoriaDTO;
 import com.example.pa.model.Categoria;
-import com.example.pa.model.SubCategoria;
-import java.util.List;
 import javax.annotation.processing.Generated;
 import org.springframework.stereotype.Component;
 
 @Generated(
     value = "org.mapstruct.ap.MappingProcessor",
-    date = "2024-09-30T16:44:34-0300",
+    date = "2024-10-01T13:18:54-0300",
     comments = "version: 1.6.2, compiler: Eclipse JDT (IDE) 3.40.0.v20240919-1711, environment: Java 17.0.12 (Eclipse Adoptium)"
 )
 @Component
@@ -21,13 +19,13 @@ public class CategoriaMapperImpl implements CategoriaMapper {
             return null;
         }
 
+        boolean activo = false;
         Long id = null;
         String nombre = null;
-        boolean activo = false;
 
+        activo = categoria.isActivo();
         id = categoria.getId();
         nombre = categoria.getNombre();
-        activo = categoria.isActivo();
 
         CategoriaDTO categoriaDTO = new CategoriaDTO( id, nombre, activo );
 
@@ -40,17 +38,11 @@ public class CategoriaMapperImpl implements CategoriaMapper {
             return null;
         }
 
-        Long id = null;
-        String nombre = null;
-        boolean activo = false;
+        Categoria categoria = new Categoria();
 
-        id = categoriaDTO.getId();
-        nombre = categoriaDTO.getNombre();
-        activo = categoriaDTO.isActivo();
-
-        List<SubCategoria> subcategorias = null;
-
-        Categoria categoria = new Categoria( id, nombre, activo, subcategorias );
+        categoria.setActivo( categoriaDTO.isActivo() );
+        categoria.setId( categoriaDTO.getId() );
+        categoria.setNombre( categoriaDTO.getNombre() );
 
         return categoria;
     }

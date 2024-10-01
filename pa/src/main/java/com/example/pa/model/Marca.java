@@ -23,6 +23,9 @@ public class Marca {
         this.descripcion = descripcion;
         this.activo = activo;
     }
+    
+    public Marca() {
+    }
 
     public Long getId() {
         return id;

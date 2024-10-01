@@ -1,14 +1,10 @@
 package com.example.pa.model;
 
-
-import java.util.List;
-
-import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.OneToMany;
+
 
 @Entity
 public class Categoria {
@@ -21,15 +17,16 @@ public class Categoria {
 
     private boolean activo = true; //Indicador de Categoria (Activa/Inactiva)
 
-    @OneToMany(mappedBy = "categoria", cascade = CascadeType.ALL)
-    private List<SubCategoria> subcategorias;
-
     //Contructor
-    public Categoria(Long id, String nombre, boolean activo, List<SubCategoria> subcategorias) {
+    public Categoria(Long id, String nombre, boolean activo) {
         this.id = id;
         this.nombre = nombre;
         this.activo = activo;
-        this.subcategorias = subcategorias;
+       
+    
+    }
+    
+    public Categoria() {
     }
 
     //Getter
@@ -45,11 +42,6 @@ public class Categoria {
         return activo;
     }
 
-    public List<SubCategoria> getSubcategorias() {
-        return subcategorias;
-    }
-
-    
 
     //Setter
     public void setId(Long id) {
@@ -64,9 +56,6 @@ public class Categoria {
         this.activo = activo;
     }
 
-    public void setSubcategorias(List<SubCategoria> subcategorias) {
-        this.subcategorias = subcategorias;
-    }
 
 }
 
