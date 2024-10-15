@@ -1,2 +1,2 @@
 # PA
-Proyecto Taller de Programacion 2024
+Proyecto Programacion Avanzada 2024
