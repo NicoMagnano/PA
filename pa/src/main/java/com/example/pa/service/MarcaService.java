@@ -1,12 +1,16 @@
 package com.example.pa.service;
 
 import com.example.pa.model.Marca;
+import com.example.pa.controller.Mapper.MarcaMapper;
 import com.example.pa.repository.MarcaRepository;
+
+import jakarta.persistence.EntityNotFoundException;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 @Service
 public class MarcaService {
@@ -43,4 +47,25 @@ public class MarcaService {
     public List<Marca> obtenerMarcasActivas() {
         return marcaRepository.findByActivo(true);
     }
+
+     // Método para "eliminar" (ocultar) una marca
+    public void deleteById(Long id) {
+        Marca marca = marcaRepository.findById(id)
+                                     .orElseThrow(() -> new EntityNotFoundException("Marca no encontrada"));
+        marca.setActivo(false);
+        marcaRepository.save(marca);
+    }
+
+    // Método para restaurar una marca (marcar como activa)
+    public void restaurarMarca(Long id) {
+        Marca marca = marcaRepository.findById(id)
+                                     .orElseThrow(() -> new EntityNotFoundException("Marca no encontrada"));
+        marca.setActivo(true);
+        marcaRepository.save(marca);
+    }
+
+    public List<Marca> obtenerMarcasActivas() {
+        return marcaRepository.findByActivoTrue();
+    }
 }
+
