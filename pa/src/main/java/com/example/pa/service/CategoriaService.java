@@ -1,12 +1,13 @@
 package com.example.pa.service;
 
-import com.example.pa.model.Categoria;
-import com.example.pa.model.Marca;
-import com.example.pa.repository.CategoriaRepository; // Importa el repositorio 'CategoriaRepository', que maneja la interacción con la base de datos
-import org.springframework.beans.factory.annotation.Autowired; // Importa la anotación '@Autowired' para la inyección de dependencias.
-import org.springframework.stereotype.Service; // Importa la anotación '@Service', que indica que esta clase es un servicio de la aplicación.
 import java.util.List;
 import java.util.Optional;
+
+import org.springframework.beans.factory.annotation.Autowired; // Importa el repositorio 'CategoriaRepository', que maneja la interacción con la base de datos
+import org.springframework.stereotype.Service; // Importa la anotación '@Autowired' para la inyección de dependencias.
+
+import com.example.pa.model.Categoria; // Importa la anotación '@Service', que indica que esta clase es un servicio de la aplicación.
+import com.example.pa.repository.CategoriaRepository;
 
 @Service // Anota esta clase como un servicio, indicando que contiene la lógica de negocio. Spring la gestionará como un bean.
 public class CategoriaService {
