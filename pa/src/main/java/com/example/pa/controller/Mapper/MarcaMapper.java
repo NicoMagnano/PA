@@ -5,7 +5,7 @@ import org.mapstruct.Mapper;
 import com.example.pa.controller.DTO.MarcaDTO.MarcaDTO;
 import com.example.pa.model.Marca;
 
-@Mapper
+@Mapper(componentModel = "spring")
 public interface MarcaMapper {
     MarcaDTO toDTO(Marca marca);
     Marca toEntity(MarcaDTO marcaDTO);

@@ -5,7 +5,7 @@ import org.mapstruct.Mapper;
 import com.example.pa.controller.DTO.CategoriaDTO.CategoriaDTO;
 import com.example.pa.model.Categoria;
 
-@Mapper
+@Mapper(componentModel = "spring")
 public interface CategoriaMapper {
 
     CategoriaDTO toDTO(Categoria categoria);
