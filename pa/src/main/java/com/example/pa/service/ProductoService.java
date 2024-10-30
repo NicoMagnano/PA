@@ -77,8 +77,7 @@ public class ProductoService {
     }
 
     //Validacion de Precios Positivo
-    @SuppressWarnings("unused")
-    private void ValidarPrecio(double precio) {
+    void ValidarPrecio(double precio) {
         if (precio < 0) {
             throw new  IllegalArgumentException("El precio no puede ser negativo");
         }

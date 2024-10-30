@@ -40,7 +40,6 @@ public class Producto {
     @ElementCollection
     private List<String> imagenes;
 
-    //Relaciones (Categoria/SubCategoria/Variante)
     @ManyToOne
     @JoinColumn(name = "categoria_id")
     private Categoria categoria;
@@ -92,7 +91,6 @@ public class Producto {
     public Categoria getCategoria() {
         return categoria;
     }
-
 
     public List<Variante> getVariantes() {
         return variantes;
