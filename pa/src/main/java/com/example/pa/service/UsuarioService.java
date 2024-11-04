@@ -1,59 +1,126 @@
 package com.example.pa.service;
 
-import java.util.ArrayList; // Importa la clase ArrayList para usarla más adelante
+import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.Set;
 
-import org.springframework.beans.factory.annotation.Autowired; // Anotación para la inyección de dependencias
-import org.springframework.stereotype.Service; // Anotación que indica que esta clase es un servicio de Spring
-import com.example.pa.controller.DTO.UsuarioDTO.RegistroUsuarioDTO; // DTO para el registro de usuario
-import com.example.pa.model.Usuario; // Modelo de usuario
-import com.example.pa.repository.UsuarioRepository; // Repositorio de usuario
-import org.springframework.security.crypto.password.PasswordEncoder; // Interfaz para codificar contraseñas
-import org.springframework.security.core.userdetails.UserDetails; // Interfaz que representa los detalles del usuario
-import org.springframework.security.core.userdetails.UsernameNotFoundException; // Excepción para usuario no encontrado
-import org.springframework.security.core.userdetails.User; // Implementación de UserDetails
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
-@Service // Marca la clase como un servicio que será manejado por el contenedor de Spring
+import com.example.pa.controller.DTO.UsuarioDTO.PerfilUsuarioDTO;
+import com.example.pa.controller.DTO.UsuarioDTO.RegistroUsuarioDTO;
+import com.example.pa.model.Rol;
+import com.example.pa.model.RolNombre;
+import com.example.pa.model.Usuario;
+import com.example.pa.repository.RolRepository;
+import com.example.pa.repository.UsuarioRepository;
+
+import jakarta.transaction.Transactional;
+import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
+import org.springframework.security.core.userdetails.User;
+
+import com.example.pa.service.AuditoriaService;
+
+@Service
 public class UsuarioService {
 
-    @Autowired // Inyección automática del repositorio de usuarios
+    @Autowired
     private UsuarioRepository usuarioRepository;
 
-    @Autowired // Inyección automática del codificador de contraseñas
+    @Autowired
     private PasswordEncoder passwordEncoder;
+
+    // Inyectamos el servicio de auditoría
+    @Autowired
+    private AuditoriaService auditoriaService;
+
+    @Autowired
+    private RolRepository rolRepository;
 
     // Método para registrar un nuevo usuario
     public Usuario registrar(RegistroUsuarioDTO dto) throws Exception {
-        // Imprime las contraseñas recibidas para depuración
         System.out.println("Contraseña: " + dto.getPassword());
         System.out.println("Confirmación de Contraseña: " + dto.getConfirmarPassword());
         
-        // Validar que las contraseñas coincidan
         if (!dto.getPassword().equals(dto.getConfirmarPassword())) {
             throw new Exception("Las contraseñas no coinciden");
         }
 
-        // Validar si el email ya existe en la base de datos
         if (usuarioRepository.existsByEmail(dto.getEmail())) {
             throw new Exception("El correo electrónico ya está registrado");
         }
 
-        // Crear un nuevo objeto Usuario con la contraseña encriptada
         Usuario usuario = new Usuario();
         usuario.setNombre(dto.getNombre());
         usuario.setEmail(dto.getEmail());
-        usuario.setPassword(passwordEncoder.encode(dto.getPassword())); // Se encripta la contraseña
+        usuario.setPassword(passwordEncoder.encode(dto.getPassword()));
 
-        // Guardar el usuario en la base de datos y retornar el objeto Usuario guardado
-        return usuarioRepository.save(usuario);
+        Usuario usuarioGuardado = usuarioRepository.save(usuario);
+
+        // Registrar evento de auditoría para el registro de usuario
+        auditoriaService.registrarEvento(usuarioGuardado.getEmail(), "REGISTRO", "Registro de nuevo usuario");
+
+        return usuarioGuardado;
     }
 
     // Método para cargar un usuario por su email
     public UserDetails cargarUsuarioPorEmail(String email) {
-        // Buscar el usuario en la base de datos usando el email proporcionado
         Usuario usuario = usuarioRepository.findByEmail(email)
             .orElseThrow(() -> new UsernameNotFoundException("Usuario no encontrado"));
         
-        // Retornar un objeto User que implementa UserDetails, conteniendo email y contraseña
-        return new User(usuario.getEmail(), usuario.getPassword(), new ArrayList<>()); // Aquí se puede agregar roles si es necesario
+        return new User(usuario.getEmail(), usuario.getPassword(), new ArrayList<>());
     }
+
+    // Obtener perfil actual
+    public PerfilUsuarioDTO obtenerPerfil(Long usuarioId) {
+        Usuario usuario = usuarioRepository.findById(usuarioId).orElseThrow();
+        PerfilUsuarioDTO dto = new PerfilUsuarioDTO();
+        dto.setNombre(usuario.getNombre());
+        dto.setCorreo(usuario.getEmail());
+        dto.setTelefono(usuario.getTelefono());
+        dto.setDireccionEnvio(usuario.getDireccionEnvio());
+        return dto;
+    }
+
+    // Actualizar perfil con verificación de correo único
+    @Transactional
+    public boolean actualizarPerfil(Long usuarioId, PerfilUsuarioDTO perfilDTO) {
+        if (usuarioRepository.existsByEmailAndIdNot(perfilDTO.getCorreo(), usuarioId)) {
+            return false;
+        }
+        Usuario usuario = usuarioRepository.findById(usuarioId).orElseThrow();
+        usuario.setNombre(perfilDTO.getNombre());
+        usuario.setEmail(perfilDTO.getCorreo());
+        usuario.setTelefono(perfilDTO.getTelefono());
+        usuario.setDireccionEnvio(perfilDTO.getDireccionEnvio());
+
+        usuarioRepository.save(usuario);
+
+        // Registrar evento de auditoría para la actualización de perfil
+        auditoriaService.registrarEvento(usuario.getEmail(), "ACTUALIZAR_PERFIL", "Actualización de datos del perfil");
+
+        return true;
+    }
+
+    public void asignarRolAuditor(Long usuarioId) {
+        Usuario usuario = usuarioRepository.findById(usuarioId)
+                .orElseThrow(() -> new RuntimeException("Usuario no encontrado"));
+        
+       
+        RolNombre rolNombre = RolNombre.AUDITOR; // Cambia esto si es necesario
+        Rol auditorRole = rolRepository.findByNombre(rolNombre)
+                .orElseThrow(() -> new RuntimeException("Rol AUDITOR no encontrado"));
+    
+        usuario.getRoles().add(auditorRole);
+        usuarioRepository.save(usuario);
+    }
+
+    public Usuario obtenerUsuarioPorId(Long usuarioId) {
+        return usuarioRepository.findById(usuarioId)
+                .orElseThrow(() -> new RuntimeException("Usuario no encontrado"));
+    }
+    
 }
+

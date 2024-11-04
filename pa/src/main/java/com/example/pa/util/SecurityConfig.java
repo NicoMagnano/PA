@@ -28,7 +28,7 @@ public class SecurityConfig {
         http
             .csrf().disable()
             .authorizeHttpRequests((requests) -> requests
-                .requestMatchers("/api/usuarios/registro", "/api/usuarios/login").permitAll() // Permitir el acceso a las rutas del registro y login
+                .requestMatchers("/api/usuarios/registro", "/api/usuarios/login", "/api/auditorias").permitAll() // Permitir el acceso a las rutas del registro y login
                 .anyRequest().authenticated() // Requiere autenticación para cualquier otra solicitud
             )
             .formLogin() // Usa la página de login por defecto de Spring Security

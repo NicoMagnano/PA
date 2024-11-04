@@ -1,17 +1,15 @@
 package com.example.pa.model;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
+import java.util.HashSet;
+import java.util.Set;
 
 @Entity
 @Table(name = "usuarios")
 public class Usuario {
 
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     @Column(nullable = false)
@@ -23,9 +21,20 @@ public class Usuario {
     @Column(nullable = false)
     private String password;
 
-    // Agregar luego otros campos, como historial de pedidos
+    private String telefono;
 
-    // Getters y setters
+    private String direccionEnvio;
+
+    // Relación Many-to-Many con la entidad Rol
+    @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    @JoinTable(
+        name = "usuario_roles", // Nombre de la tabla intermedia
+        joinColumns = @JoinColumn(name = "usuario_id"), // Columna que referencia a Usuario
+        inverseJoinColumns = @JoinColumn(name = "rol_id") // Columna que referencia a Rol
+    )
+    private Set<Rol> roles = new HashSet<>();
+
+    // Getters y Setters
     public Long getId() {
         return id;
     }
@@ -58,8 +67,43 @@ public class Usuario {
         this.password = password;
     }
 
+    public String getTelefono() {
+        return telefono;
+    }
 
+    public void setTelefono(String telefono) {
+        this.telefono = telefono;
+    }
 
+    public String getDireccionEnvio() {
+        return direccionEnvio;
+    }
 
+    public void setDireccionEnvio(String direccionEnvio) {
+        this.direccionEnvio = direccionEnvio;
+    }
+
+    public Set<Rol> getRoles() {
+        return roles;
+    }
+
+    public void setRoles(Set<Rol> roles) {
+        this.roles = roles;
+    }
+
+    // Método para agregar un rol al usuario
+    public void addRol(Rol rol) {
+        this.roles.add(rol);
+    }
+
+    // Método para eliminar un rol del usuario
+    public void removeRol(Rol rol) {
+        this.roles.remove(rol);
+    }
+
+    // Constructor vacío
+    public Usuario() {
+    }
 }
+
 
