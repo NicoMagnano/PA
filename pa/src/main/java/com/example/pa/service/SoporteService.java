@@ -1,5 +1,5 @@
 package com.example.pa.service;
-
+import com.example.pa.model.EstadoConsulta;
 import java.io.File;
 import java.io.IOException;
 import java.time.LocalDateTime;
@@ -68,7 +68,42 @@ public class SoporteService {
         return rutasGuardadas;
     }
     
-
+    public Consulta cambiarEstadoConsulta(Long consultaId, EstadoConsulta nuevoEstado) {
+        // Buscar la consulta en el repositorio
+        Consulta consulta = consultaRepository.findById(consultaId)
+                .orElseThrow(() -> new IllegalArgumentException("Consulta no encontrada con id: " + consultaId));
+    
+        // Lógica de validación para cambio de estado
+        EstadoConsulta estadoActual = consulta.getEstado();
+    
+        // Si el estado actual es igual al nuevo estado, no se realiza ninguna operación y se retorna la consulta
+        if (estadoActual == nuevoEstado) {
+            return consulta; // Retorna sin guardar si el estado no cambia
+        }
+    
+        // Validar transiciones de estados permitidas
+        if (estadoActual == EstadoConsulta.PENDIENTE && nuevoEstado == EstadoConsulta.EN_PROCESO) {
+            consulta.setEstado(EstadoConsulta.EN_PROCESO);
+        } else if (estadoActual == EstadoConsulta.EN_PROCESO && nuevoEstado == EstadoConsulta.RESUELTA) {
+            consulta.setEstado(EstadoConsulta.RESUELTA);
+        } else if (estadoActual == EstadoConsulta.PENDIENTE && nuevoEstado == EstadoConsulta.RESUELTA) {
+            consulta.setEstado(EstadoConsulta.RESUELTA);
+        } else if (estadoActual == EstadoConsulta.RESUELTA && nuevoEstado == EstadoConsulta.PENDIENTE) {
+            throw new IllegalStateException("No se puede revertir a estado Pendiente");
+        } else if (estadoActual == EstadoConsulta.RESUELTA && nuevoEstado == EstadoConsulta.EN_PROCESO) {
+            throw new IllegalStateException("No se puede revertir a estado En Proceso");
+        } else {
+            throw new IllegalStateException("Transición de estado no permitida: " + estadoActual + " a " + nuevoEstado);
+        }
+    
+        // Guardar solo si el estado ha cambiado
+        return consultaRepository.save(consulta);
+    }
+    
+    
+    
+    
+    
     public List<Consulta> obtenerTodasLasConsultas() {
         return consultaRepository.findAll();
     }

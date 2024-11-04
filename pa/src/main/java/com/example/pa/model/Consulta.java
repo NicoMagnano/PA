@@ -5,6 +5,8 @@ import java.util.List;
 
 import jakarta.persistence.ElementCollection;
 import jakarta.persistence.Entity;
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
@@ -20,7 +22,8 @@ public class Consulta {
 
     private LocalDateTime fechaEnvio;
 
-    private String estado = "Pendiente"; // Pendiente, En Proceso, Resuelta
+    @Enumerated(EnumType.STRING)
+    private EstadoConsulta estado = EstadoConsulta.PENDIENTE;// Pendiente, En Proceso, Resuelta
 
     @ElementCollection
     private List<String> archivosAdjuntos;
@@ -44,10 +47,10 @@ public class Consulta {
     public void setFechaEnvio(LocalDateTime fechaEnvio) {
         this.fechaEnvio = fechaEnvio;
     }
-    public String getEstado() {
+    public EstadoConsulta getEstado() {
         return estado;
     }
-    public void setEstado(String estado) {
+    public void setEstado(EstadoConsulta estado) {
         this.estado = estado;
     }
     public void setArchivosAdjuntos(List<String> rutasArchivos) {
