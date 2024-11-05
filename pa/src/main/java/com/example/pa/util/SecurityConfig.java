@@ -10,8 +10,13 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
+import org.springframework.web.cors.CorsConfiguration;
+import org.springframework.web.cors.CorsConfigurationSource;
+import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
 
 import com.example.pa.service.CustomUserDetailsService;
+
+import java.util.List;
 
 @Configuration
 public class SecurityConfig {
@@ -26,18 +31,32 @@ public class SecurityConfig {
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         http
+            .cors().configurationSource(corsConfigurationSource()).and() // Activar CORS y usar la configuración definida
             .csrf().disable()
             .authorizeHttpRequests((requests) -> requests
-                .requestMatchers("/api/usuarios/registro", "/api/usuarios/login", "/api/auditorias").permitAll() // Permitir el acceso a las rutas del registro y login
-                .anyRequest().authenticated() // Requiere autenticación para cualquier otra solicitud
+                .requestMatchers("/api/usuarios/registro", "/api/usuarios/login", "/api/auditorias").permitAll()
+                .anyRequest().authenticated()
             )
-            .formLogin() // Usa la página de login por defecto de Spring Security
+            .formLogin()
             .and()
-            .logout().permitAll(); // Permitir el cierre de sesión
-        
+            .logout().permitAll();
+
         return http.build();
     }
-    
+
+    @Bean
+    public CorsConfigurationSource corsConfigurationSource() {
+        CorsConfiguration configuration = new CorsConfiguration();
+        configuration.setAllowedOrigins(List.of("http://localhost:3000")); // Permite el origen específico del frontend
+        configuration.setAllowedMethods(List.of("GET", "POST", "PUT", "DELETE", "OPTIONS"));
+        configuration.setAllowedHeaders(List.of("*"));
+        configuration.setAllowCredentials(true); // Permite enviar credenciales (como cookies o tokens) con las solicitudes
+
+        UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
+        source.registerCorsConfiguration("/**", configuration);
+        return source;
+    }
+
     @Bean
     public PasswordEncoder passwordEncoder() {
         return new BCryptPasswordEncoder();
@@ -48,4 +67,3 @@ public class SecurityConfig {
         return authenticationConfiguration.getAuthenticationManager();
     }
 }
-

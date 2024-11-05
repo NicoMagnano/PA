@@ -1,10 +1,14 @@
 package com.example.pa.controller.DTO.UsuarioDTO;
 
+import org.springframework.lang.NonNull;
+
 public class RegistroUsuarioDTO {
     
     private String nombre;
     private String email;
     private String password;
+
+    @NonNull
     private String confirmPassword;
 
     // Getters y setters
