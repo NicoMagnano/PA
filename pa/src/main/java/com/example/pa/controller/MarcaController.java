@@ -58,4 +58,6 @@ public class MarcaController {
         List<Marca> marcasActivas = marcaService.obtenerMarcasActivas();
         return ResponseEntity.ok(marcasActivas);
     }
-}
+    }
+
+
