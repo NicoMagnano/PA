@@ -11,6 +11,7 @@ import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
+import jakarta.validation.constraints.Min;
 
 @Entity
 public class Producto {
@@ -24,6 +25,7 @@ public class Producto {
     @Column(columnDefinition = "TEXT")
     private String descripcion;
     
+    @Min(value = 0)
     private double precio;
 
     private String sku; //Codigo Unico de referencia para el Producto
@@ -38,10 +40,15 @@ public class Producto {
     @ElementCollection
     private List<String> imagenes;
 
-    //Relaciones (Categoria/SubCategoria/Variante)
     @ManyToOne
     @JoinColumn(name = "categoria_id")
     private Categoria categoria;
+
+    @ManyToOne
+    @JoinColumn(name = "marca_id")
+    private Marca Marca;
+
+
 
     @OneToMany(mappedBy = "producto", cascade = CascadeType.ALL)
     private List<Variante> variantes;
@@ -84,8 +91,6 @@ public class Producto {
     public Categoria getCategoria() {
         return categoria;
     }
-
-
 
     public List<Variante> getVariantes() {
         return variantes;

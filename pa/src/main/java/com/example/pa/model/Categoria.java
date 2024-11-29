@@ -1,11 +1,10 @@
 package com.example.pa.model;
 
-
-
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+
 
 @Entity
 public class Categoria {
@@ -13,38 +12,50 @@ public class Categoria {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
     private String nombre;
-    private String descripcion;
+
     private boolean activo = true; //Indicador de Categoria (Activa/Inactiva)
-   
-    // Getters y Setters
-    public Long getId() {
-        return id;
+
+    //Contructor
+    public Categoria(Long id, String nombre, boolean activo) {
+        this.id = id;
+        this.nombre = nombre;
+        this.activo = activo;
+       
+    
+    }
+    
+    public Categoria() {
     }
 
-    public void setId(Long id) {
-        this.id = id;
+    //Getter
+    public Long getId() {
+        return id;
     }
 
     public String getNombre() {
         return nombre;
     }
 
+    public boolean isActivo() {
+        return activo;
+    }
+
+
+    //Setter
+    public void setId(Long id) {
+        this.id = id;
+    }
+
     public void setNombre(String nombre) {
         this.nombre = nombre;
     }
 
-    public String getDescripcion() {
-        return descripcion;
+    public void setActivo(boolean activo) {
+        this.activo = activo;
     }
 
-    public void setDescripcion(String descripcion) {
-        this.descripcion = descripcion;
-    }
-
-    public void setActivo(boolean activo){
-        this.activo= activo;
-    }
 
 }
 
