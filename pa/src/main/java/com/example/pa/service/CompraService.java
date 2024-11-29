@@ -22,4 +22,31 @@ public class CompraService {
         return compraRepository.findAll();
     }
     
+
+    // Buscar una compra por ID
+    public Compra findById(Long id) {
+        return compraRepository.findById(id)
+                .orElseThrow(() -> new RuntimeException("Compra no encontrada con ID: " + id));
+    }
+
+    // Crear o actualizar una compra
+    public Compra saveOrUpdate(Compra compra) {
+        return compraRepository.save(compra);
+    }
+
+
+    // Agregar un producto a una compra
+    public Compra agregarProducto(Long compraId, String nombre, String descripcion, double precio, int stock) {
+        Compra compra = findById(compraId); // Buscar la compra
+        compra.crearYAgregarProducto(nombre, descripcion, precio, stock); // Agregar el producto
+        return compraRepository.save(compra); // Guardar la compra actualizada
+    }
+
+    // Eliminar un producto de una compra
+    public Compra eliminarProducto(Long compraId, Long productoId) {
+        Compra compra = findById(compraId); // Buscar la compra
+        compra.eliminarProducto(productoId); // Eliminar el producto por ID
+        return compraRepository.save(compra); // Guardar la compra actualizada
+    }
+
 }

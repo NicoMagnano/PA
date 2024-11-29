@@ -1,6 +1,7 @@
 package com.example.pa.model;
 
 import java.util.List;
+
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.ElementCollection;
@@ -12,6 +13,7 @@ import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
 import jakarta.validation.constraints.Min;
+
 
 @Entity
 public class Producto {
@@ -48,6 +50,9 @@ public class Producto {
     @JoinColumn(name = "marca_id")
     private Marca Marca;
 
+    @ManyToOne
+    @JoinColumn(name = "compra_id") // Relación con Compra
+    private Compra compra;
 
 
     @OneToMany(mappedBy = "producto", cascade = CascadeType.ALL)
@@ -147,4 +152,7 @@ public class Producto {
     public void setUmbralStockBajo(int umbralStockBajo) {
         this.umbralStockBajo = umbralStockBajo;
     }
+    
+
+
 }

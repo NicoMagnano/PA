@@ -6,6 +6,6 @@ import org.springframework.stereotype.Repository;
 import com.example.pa.model.Compra;
 
 @Repository
-public interface CompraRepository extends JpaRepository<Compra, Integer> {
+public interface CompraRepository extends JpaRepository<Compra, Long> {
     
 }
