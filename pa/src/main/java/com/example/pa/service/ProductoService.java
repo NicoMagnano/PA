@@ -1,7 +1,5 @@
 package com.example.pa.service;
 import org.springframework.beans.factory.annotation.Autowired;
-//import org.springframework.data.jpa.repository.JpaRepository;
-//import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Service;
 
 import com.example.pa.model.Producto;
@@ -79,8 +77,7 @@ public class ProductoService {
     }
 
     //Validacion de Precios Positivo
-    @SuppressWarnings("unused")
-    private void ValidarPrecio(double precio) {
+    void ValidarPrecio(double precio) {
         if (precio < 0) {
             throw new  IllegalArgumentException("El precio no puede ser negativo");
         }

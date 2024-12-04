@@ -1,61 +1,56 @@
 package com.example.pa.controller;
 
-
+import com.example.pa.controller.DTO.CategoriaDTO.CategoriaDTO;
 import com.example.pa.service.CategoriaService;
-import com.example.pa.model.Categoria;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
+
 import java.util.List;
-import java.util.Optional;
+
 
 @RestController
-@RequestMapping("/api/categorias")
+@RequestMapping("/categorias")
 public class CategoriaController {
 
     @Autowired
     private CategoriaService categoriaService;
 
-    @GetMapping
-    public List<Categoria> getAllCategorias() {
-        return categoriaService.findAll();
-    }
-
-    @GetMapping("/{id}")
-    public ResponseEntity<Categoria> getcategoriaById(@PathVariable Long id) {
-        Optional<Categoria> categoria = categoriaService.findById(id);
-        return categoria.map(ResponseEntity::ok).orElseGet(() -> ResponseEntity.notFound().build());
-    }
-
+    // Método para crear una nueva categoría
     @PostMapping
-    public Categoria createCategoria(@RequestBody Categoria categoria) {
-        return categoriaService.save(categoria);
+    public ResponseEntity<CategoriaDTO> crearCategoria(@RequestBody CategoriaDTO categoriaDTO) {
+        CategoriaDTO nuevaCategoria = categoriaService.crearCategoria(categoriaDTO);
+        return new ResponseEntity<>(nuevaCategoria, HttpStatus.CREATED);
     }
 
+    // Método para actualizar una categoría existente
     @PutMapping("/{id}")
-    public ResponseEntity<Categoria> updateCategoria(@PathVariable Long id, @RequestBody Categoria categoria) {
-        if (!categoriaService.findById(id).isPresent()) {
-            return ResponseEntity.notFound().build();
-        }
-        categoria.setId(id);
-        return ResponseEntity.ok(categoriaService.save(categoria));
+    public ResponseEntity<CategoriaDTO> actualizarCategoria(@PathVariable Long id, @RequestBody CategoriaDTO categoriaDTO) {
+        CategoriaDTO categoriaActualizada = categoriaService.actualizarCategoria(id, categoriaDTO);
+        return categoriaActualizada != null
+            ? new ResponseEntity<>(categoriaActualizada, HttpStatus.OK)
+            : new ResponseEntity<>(HttpStatus.NOT_FOUND);
     }
 
+    // Método para eliminar una categoría (eliminación lógica)
     @DeleteMapping("/{id}")
-    public ResponseEntity<String> eliminarCategoria(@PathVariable Long id) {
+    public ResponseEntity<Void> eliminarCategoria(@PathVariable Long id) {
         categoriaService.eliminarCategoria(id);
-        return ResponseEntity.ok("categoria ocultada exitosamente");
+        return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }
 
+    // Método para recuperar una categoría previamente eliminada
     @PutMapping("/recuperar/{id}")
-    public ResponseEntity<String> recuperarCategoria(@PathVariable Long id) {
+    public ResponseEntity<Void> recuperarCategoria(@PathVariable Long id) {
         categoriaService.recuperarCategoria(id);
-        return ResponseEntity.ok("Marca recuperada exitosamente");
+        return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }
 
-    @GetMapping("/activas")
-    public ResponseEntity<List<Categoria>> obtenerCategoriasActivas() {
-        List<Categoria> categoriasActivas = categoriaService.obtenerCategoriasActivas();
-        return ResponseEntity.ok(categoriasActivas);
+    // Método para obtener todas las categorías no eliminadas
+    @GetMapping
+    public ResponseEntity<List<CategoriaDTO>> obtenerCategorias() {
+        List<CategoriaDTO> categorias = categoriaService.obtenerCategorias();
+        return new ResponseEntity<>(categorias, HttpStatus.OK);
     }
 }

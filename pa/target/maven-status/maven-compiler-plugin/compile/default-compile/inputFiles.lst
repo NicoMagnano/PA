@@ -1,52 +1,39 @@
-C:\Users\niqui\Desktop\Programacion Avanzada\PROYECTO GIT\PA\pa\src\main\java\com\example\pa\controller\DTO\MarcaDTO\CrearMarcaDto.java
-C:\Users\niqui\Desktop\Programacion Avanzada\PROYECTO GIT\PA\pa\src\main\java\com\example\pa\repository\ProductoRepository.java
-C:\Users\niqui\Desktop\Programacion Avanzada\PROYECTO GIT\PA\pa\src\main\java\com\example\pa\controller\DTO\CategoriaDTO\ActualizarCategoriaDto.java
-C:\Users\niqui\Desktop\Programacion Avanzada\PROYECTO GIT\PA\pa\src\main\java\com\example\pa\controller\ProductoController.java
-C:\Users\niqui\Desktop\Programacion Avanzada\PROYECTO GIT\PA\pa\src\main\java\com\example\pa\PaApplication.java
-C:\Users\niqui\Desktop\Programacion Avanzada\PROYECTO GIT\PA\pa\src\main\java\com\example\pa\controller\MarcaController.java
-C:\Users\niqui\Desktop\Programacion Avanzada\PROYECTO GIT\PA\pa\src\main\java\com\example\pa\repository\SubCategoriaRepository.java
-C:\Users\niqui\Desktop\Programacion Avanzada\PROYECTO GIT\PA\pa\src\main\java\com\example\pa\controller\DTO\MarcaDTO\ConsultarMarcaDto.java
-C:\Users\niqui\Desktop\Programacion Avanzada\PROYECTO GIT\PA\pa\src\main\java\com\example\pa\controller\DTO\CategoriaDTO\RestaurarCategoriaDto.java
-C:\Users\niqui\Desktop\Programacion Avanzada\PROYECTO GIT\PA\pa\src\main\java\com\example\pa\service\CategoriaService.java
-C:\Users\niqui\Desktop\Programacion Avanzada\PROYECTO GIT\PA\pa\src\main\java\com\example\pa\service\MarcaService.java
-C:\Users\niqui\Desktop\Programacion Avanzada\PROYECTO GIT\PA\pa\src\main\java\com\example\pa\Auth\LoginRequest.java
-C:\Users\niqui\Desktop\Programacion Avanzada\PROYECTO GIT\PA\pa\src\main\java\com\example\pa\controller\Mapper\MarcaMapper.java
-C:\Users\niqui\Desktop\Programacion Avanzada\PROYECTO GIT\PA\pa\src\main\java\com\example\pa\repository\MarcaRepository.java
-C:\Users\niqui\Desktop\Programacion Avanzada\PROYECTO GIT\PA\pa\src\main\java\com\example\pa\controller\DTO\CategoriaDTO\ConsultarCategoriaDto.java
-C:\Users\niqui\Desktop\Programacion Avanzada\PROYECTO GIT\PA\pa\src\main\java\com\example\pa\controller\DTO\MarcaDTO\EliminarMarcaDto.java
-C:\Users\niqui\Desktop\Programacion Avanzada\PROYECTO GIT\PA\pa\src\main\java\com\example\pa\controller\PerfilController.java
-C:\Users\niqui\Desktop\Programacion Avanzada\PROYECTO GIT\PA\pa\src\main\java\com\example\pa\model\Marca.java
-C:\Users\niqui\Desktop\Programacion Avanzada\PROYECTO GIT\PA\pa\src\main\java\com\example\pa\repository\CategoriaRepository.java
-C:\Users\niqui\Desktop\Programacion Avanzada\PROYECTO GIT\PA\pa\src\main\java\com\example\pa\Jwt\JwtService.java
-C:\Users\niqui\Desktop\Programacion Avanzada\PROYECTO GIT\PA\pa\src\main\java\com\example\pa\Auth\AuthService.java
-C:\Users\niqui\Desktop\Programacion Avanzada\PROYECTO GIT\PA\pa\src\main\java\com\example\pa\controller\DTO\CategoriaDTO\EliminarCategoriaDto.java
-C:\Users\niqui\Desktop\Programacion Avanzada\PROYECTO GIT\PA\pa\src\main\java\com\example\pa\controller\SubCategoriaController.java
-C:\Users\niqui\Desktop\Programacion Avanzada\PROYECTO GIT\PA\pa\src\main\java\com\example\pa\Auth\RegisterRequest.java
-C:\Users\niqui\Desktop\Programacion Avanzada\PROYECTO GIT\PA\pa\src\main\java\com\example\pa\User\Role.java
-C:\Users\niqui\Desktop\Programacion Avanzada\PROYECTO GIT\PA\pa\src\main\java\com\example\pa\controller\CategoriaController.java
-C:\Users\niqui\Desktop\Programacion Avanzada\PROYECTO GIT\PA\pa\src\main\java\com\example\pa\controller\Mapper\CategoriaMapper.java
-C:\Users\niqui\Desktop\Programacion Avanzada\PROYECTO GIT\PA\pa\src\main\java\com\example\pa\Auth\AuthController.java
-C:\Users\niqui\Desktop\Programacion Avanzada\PROYECTO GIT\PA\pa\src\main\java\com\example\pa\controller\DTO\CategoriaDTO\CrearCategoriaDto.java
-C:\Users\niqui\Desktop\Programacion Avanzada\PROYECTO GIT\PA\pa\src\main\java\com\example\pa\User\User.java
-C:\Users\niqui\Desktop\Programacion Avanzada\PROYECTO GIT\PA\pa\src\main\java\com\example\pa\service\VarianteService.java
-C:\Users\niqui\Desktop\Programacion Avanzada\PROYECTO GIT\PA\pa\src\main\java\com\example\pa\model\Auditoria.java
-C:\Users\niqui\Desktop\Programacion Avanzada\PROYECTO GIT\PA\pa\src\main\java\com\example\pa\controller\DTO\MarcaDTO\ActualizarMarcaDto.java
-C:\Users\niqui\Desktop\Programacion Avanzada\PROYECTO GIT\PA\pa\src\main\java\com\example\pa\User\UserRepository.java
-C:\Users\niqui\Desktop\Programacion Avanzada\PROYECTO GIT\PA\pa\src\main\java\com\example\pa\controller\demoController.java
-C:\Users\niqui\Desktop\Programacion Avanzada\PROYECTO GIT\PA\pa\src\main\java\com\example\pa\Jwt\JwtAuthenticationFilter.java
-C:\Users\niqui\Desktop\Programacion Avanzada\PROYECTO GIT\PA\pa\src\main\java\com\example\pa\repository\AuditoriaRepository.java
-C:\Users\niqui\Desktop\Programacion Avanzada\PROYECTO GIT\PA\pa\src\main\java\com\example\pa\repository\VarianteRepository.java
-C:\Users\niqui\Desktop\Programacion Avanzada\PROYECTO GIT\PA\pa\src\main\java\com\example\pa\config\SecurityConfig.java
-C:\Users\niqui\Desktop\Programacion Avanzada\PROYECTO GIT\PA\pa\src\main\java\com\example\pa\model\Variante.java
-C:\Users\niqui\Desktop\Programacion Avanzada\PROYECTO GIT\PA\pa\src\main\java\com\example\pa\controller\DTO\MarcaDTO\MarcaDTO.java
-C:\Users\niqui\Desktop\Programacion Avanzada\PROYECTO GIT\PA\pa\src\main\java\com\example\pa\controller\VarianteController.java
-C:\Users\niqui\Desktop\Programacion Avanzada\PROYECTO GIT\PA\pa\src\main\java\com\example\pa\controller\DTO\CategoriaDTO\CategoriaDTO.java
-C:\Users\niqui\Desktop\Programacion Avanzada\PROYECTO GIT\PA\pa\src\main\java\com\example\pa\config\AplicationConfig.java
-C:\Users\niqui\Desktop\Programacion Avanzada\PROYECTO GIT\PA\pa\src\main\java\com\example\pa\model\SubCategoria.java
-C:\Users\niqui\Desktop\Programacion Avanzada\PROYECTO GIT\PA\pa\src\main\java\com\example\pa\service\ProductoService.java
-C:\Users\niqui\Desktop\Programacion Avanzada\PROYECTO GIT\PA\pa\src\main\java\com\example\pa\Auth\AuthResponse.java
-C:\Users\niqui\Desktop\Programacion Avanzada\PROYECTO GIT\PA\pa\src\main\java\com\example\pa\service\SubCategoriaService.java
-C:\Users\niqui\Desktop\Programacion Avanzada\PROYECTO GIT\PA\pa\src\main\java\com\example\pa\model\Categoria.java
-C:\Users\niqui\Desktop\Programacion Avanzada\PROYECTO GIT\PA\pa\src\main\java\com\example\pa\model\Producto.java
-C:\Users\niqui\Desktop\Programacion Avanzada\PROYECTO GIT\PA\pa\src\main\java\com\example\pa\service\AuditoriaService.java
-C:\Users\niqui\Desktop\Programacion Avanzada\PROYECTO GIT\PA\pa\src\main\java\com\example\pa\controller\DTO\MarcaDTO\RestaurarMarcaDto.java
+C:\Users\matia\OneDrive\Escritorio\Matias\la facu\cuarto año\programacion avanzada\proyecto\PA\pa\src\main\java\com\example\pa\model\Variante.java
+C:\Users\matia\OneDrive\Escritorio\Matias\la facu\cuarto año\programacion avanzada\proyecto\PA\pa\src\main\java\com\example\pa\controller\DTO\MarcaDTO\ActualizarMarcaDto.java
+C:\Users\matia\OneDrive\Escritorio\Matias\la facu\cuarto año\programacion avanzada\proyecto\PA\pa\src\main\java\com\example\pa\controller\FrontendController.java
+C:\Users\matia\OneDrive\Escritorio\Matias\la facu\cuarto año\programacion avanzada\proyecto\PA\pa\src\main\java\com\example\pa\service\CategoriaService.java
+C:\Users\matia\OneDrive\Escritorio\Matias\la facu\cuarto año\programacion avanzada\proyecto\PA\pa\src\main\java\com\example\pa\controller\DTO\MarcaDTO\MarcaDTO.java
+C:\Users\matia\OneDrive\Escritorio\Matias\la facu\cuarto año\programacion avanzada\proyecto\PA\pa\src\main\java\com\example\pa\controller\DTO\CategoriaDTO\CrearCategoriaDto.java
+C:\Users\matia\OneDrive\Escritorio\Matias\la facu\cuarto año\programacion avanzada\proyecto\PA\pa\src\main\java\com\example\pa\repository\CategoriaRepository.java
+C:\Users\matia\OneDrive\Escritorio\Matias\la facu\cuarto año\programacion avanzada\proyecto\PA\pa\src\main\java\com\example\pa\controller\ProductoController.java
+C:\Users\matia\OneDrive\Escritorio\Matias\la facu\cuarto año\programacion avanzada\proyecto\PA\pa\src\main\java\com\example\pa\model\Marca.java
+C:\Users\matia\OneDrive\Escritorio\Matias\la facu\cuarto año\programacion avanzada\proyecto\PA\pa\src\main\java\com\example\pa\repository\VarianteRepository.java
+C:\Users\matia\OneDrive\Escritorio\Matias\la facu\cuarto año\programacion avanzada\proyecto\PA\pa\src\main\java\com\example\pa\service\SoporteService.java
+C:\Users\matia\OneDrive\Escritorio\Matias\la facu\cuarto año\programacion avanzada\proyecto\PA\pa\src\main\java\com\example\pa\repository\MarcaRepository.java
+C:\Users\matia\OneDrive\Escritorio\Matias\la facu\cuarto año\programacion avanzada\proyecto\PA\pa\src\main\java\com\example\pa\config\CorsConfig.java
+C:\Users\matia\OneDrive\Escritorio\Matias\la facu\cuarto año\programacion avanzada\proyecto\PA\pa\src\main\java\com\example\pa\controller\DTO\MarcaDTO\RestaurarMarcaDto.java
+C:\Users\matia\OneDrive\Escritorio\Matias\la facu\cuarto año\programacion avanzada\proyecto\PA\pa\src\main\java\com\example\pa\controller\Mapper\MarcaMapper.java
+C:\Users\matia\OneDrive\Escritorio\Matias\la facu\cuarto año\programacion avanzada\proyecto\PA\pa\src\main\java\com\example\pa\model\EstadoConsulta.java
+C:\Users\matia\OneDrive\Escritorio\Matias\la facu\cuarto año\programacion avanzada\proyecto\PA\pa\src\main\java\com\example\pa\service\VarianteService.java
+C:\Users\matia\OneDrive\Escritorio\Matias\la facu\cuarto año\programacion avanzada\proyecto\PA\pa\src\main\java\com\example\pa\PaApplication.java
+C:\Users\matia\OneDrive\Escritorio\Matias\la facu\cuarto año\programacion avanzada\proyecto\PA\pa\src\main\java\com\example\pa\model\Consulta.java
+C:\Users\matia\OneDrive\Escritorio\Matias\la facu\cuarto año\programacion avanzada\proyecto\PA\pa\src\main\java\com\example\pa\controller\DTO\ConsultaDTO\ConsultaDTO.java
+C:\Users\matia\OneDrive\Escritorio\Matias\la facu\cuarto año\programacion avanzada\proyecto\PA\pa\src\main\java\com\example\pa\service\ProductoService.java
+C:\Users\matia\OneDrive\Escritorio\Matias\la facu\cuarto año\programacion avanzada\proyecto\PA\pa\src\main\java\com\example\pa\repository\ConsultaRepository.java
+C:\Users\matia\OneDrive\Escritorio\Matias\la facu\cuarto año\programacion avanzada\proyecto\PA\pa\src\main\java\com\example\pa\service\MarcaService.java
+C:\Users\matia\OneDrive\Escritorio\Matias\la facu\cuarto año\programacion avanzada\proyecto\PA\pa\src\main\java\com\example\pa\controller\VarianteController.java
+C:\Users\matia\OneDrive\Escritorio\Matias\la facu\cuarto año\programacion avanzada\proyecto\PA\pa\src\main\java\com\example\pa\controller\DTO\CategoriaDTO\EliminarCategoriaDto.java
+C:\Users\matia\OneDrive\Escritorio\Matias\la facu\cuarto año\programacion avanzada\proyecto\PA\pa\src\main\java\com\example\pa\controller\DTO\CategoriaDTO\RestaurarCategoriaDto.java
+C:\Users\matia\OneDrive\Escritorio\Matias\la facu\cuarto año\programacion avanzada\proyecto\PA\pa\src\main\java\com\example\pa\repository\ProductoRepository.java
+C:\Users\matia\OneDrive\Escritorio\Matias\la facu\cuarto año\programacion avanzada\proyecto\PA\pa\src\main\java\com\example\pa\controller\Mapper\CategoriaMapper.java
+C:\Users\matia\OneDrive\Escritorio\Matias\la facu\cuarto año\programacion avanzada\proyecto\PA\pa\src\main\java\com\example\pa\controller\DTO\MarcaDTO\CrearMarcaDto.java
+C:\Users\matia\OneDrive\Escritorio\Matias\la facu\cuarto año\programacion avanzada\proyecto\PA\pa\src\main\java\com\example\pa\controller\DTO\MarcaDTO\ConsultarMarcaDto.java
+C:\Users\matia\OneDrive\Escritorio\Matias\la facu\cuarto año\programacion avanzada\proyecto\PA\pa\src\main\java\com\example\pa\controller\DTO\CategoriaDTO\CategoriaDTO.java
+C:\Users\matia\OneDrive\Escritorio\Matias\la facu\cuarto año\programacion avanzada\proyecto\PA\pa\src\main\java\com\example\pa\model\Categoria.java
+C:\Users\matia\OneDrive\Escritorio\Matias\la facu\cuarto año\programacion avanzada\proyecto\PA\pa\src\main\java\com\example\pa\model\Producto.java
+C:\Users\matia\OneDrive\Escritorio\Matias\la facu\cuarto año\programacion avanzada\proyecto\PA\pa\src\main\java\com\example\pa\controller\MarcaController.java
+C:\Users\matia\OneDrive\Escritorio\Matias\la facu\cuarto año\programacion avanzada\proyecto\PA\pa\src\main\java\com\example\pa\controller\SoporteController.java
+C:\Users\matia\OneDrive\Escritorio\Matias\la facu\cuarto año\programacion avanzada\proyecto\PA\pa\src\main\java\com\example\pa\controller\DTO\CategoriaDTO\ActualizarCategoriaDto.java
+C:\Users\matia\OneDrive\Escritorio\Matias\la facu\cuarto año\programacion avanzada\proyecto\PA\pa\src\main\java\com\example\pa\controller\DTO\CategoriaDTO\ConsultarCategoriaDto.java
+C:\Users\matia\OneDrive\Escritorio\Matias\la facu\cuarto año\programacion avanzada\proyecto\PA\pa\src\main\java\com\example\pa\controller\DTO\MarcaDTO\EliminarMarcaDto.java
+C:\Users\matia\OneDrive\Escritorio\Matias\la facu\cuarto año\programacion avanzada\proyecto\PA\pa\src\main\java\com\example\pa\controller\CategoriaController.java

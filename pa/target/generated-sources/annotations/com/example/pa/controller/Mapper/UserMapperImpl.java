@@ -3,14 +3,12 @@ package com.example.pa.controller.Mapper;
 import com.example.pa.User.User;
 import com.example.pa.controller.DTO.UserDTO.UserProfileDTO;
 import javax.annotation.processing.Generated;
-import org.springframework.stereotype.Component;
 
 @Generated(
     value = "org.mapstruct.ap.MappingProcessor",
-    date = "2024-12-04T02:59:12-0300",
-    comments = "version: 1.6.2, compiler: Eclipse JDT (IDE) 3.40.0.z20241112-1021, environment: Java 17.0.13 (Eclipse Adoptium)"
+    date = "2024-12-04T03:03:51-0300",
+    comments = "version: 1.5.5.Final, compiler: Eclipse JDT (IDE) 3.40.0.z20241112-1021, environment: Java 17.0.13 (Eclipse Adoptium)"
 )
-@Component
 public class UserMapperImpl implements UserMapper {
 
     @Override
