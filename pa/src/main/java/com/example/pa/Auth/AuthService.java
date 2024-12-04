@@ -14,6 +14,8 @@ import org.springframework.security.core.userdetails.UserDetails;
 
 import lombok.RequiredArgsConstructor;
 
+import com.example.pa.service.AuditoriaService;  // Inyecta el servicio de auditoría
+
 @Service
 @RequiredArgsConstructor
 public class AuthService {
@@ -22,11 +24,17 @@ public class AuthService {
     private final JwtService jwtService;
     private final PasswordEncoder passwordEncoder;
     private final AuthenticationManager authenticationManager;
+    private final AuditoriaService auditoriaService;  // Inyecta el servicio de auditoría
 
     public AuthResponse login(LoginRequest request) {
         authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(request.getUsername(), request.getPassword()));
         UserDetails user=userRepository.findByUsername(request.getUsername()).orElseThrow();
         String token=jwtService.getToken(user);
+
+        // Registrar la auditoría
+        auditoriaService.registrarAuditoria(request.getUsername(), "LOGIN", "Inicio de sesión exitoso");
+
+
         return AuthResponse.builder()
             .token(token)
             .build();
@@ -47,6 +55,10 @@ public class AuthService {
 
         userRepository.save(user);
 
+        // Registrar la auditoría
+        auditoriaService.registrarAuditoria(request.getUsername(), "REGISTER", "Registro de usuario exitoso");
+
+        //Genera el token
         return AuthResponse.builder()
             .token(jwtService.getToken(user))
             .build();
