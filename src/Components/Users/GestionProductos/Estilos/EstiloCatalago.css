@@ -1,0 +1,29 @@
+.catalogo-container {
+    padding: 20px;
+    max-width: 1200px;
+    margin: auto;
+}
+
+.productos-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: space-around;
+}
+
+.producto-card {
+    border: 1px solid #ddd;
+    padding: 15px;
+    width: 250px;
+    text-align: center;
+    background-color: #fff;
+    border-radius: 8px;
+}
+
+.producto-imagen {
+    width: 100%;
+    height: auto;
+    max-height: 200px;
+    object-fit: cover;
+    margin-bottom: 10px;
+}
